@@ -32,13 +32,14 @@ app.use(session({
 }
 ));
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
 
-app.get('/', function (req,res) {
-    res.send('An Online Platform for reviews');
+require('./services/user.service.server')(app);
 
-});
+
 
 
 app.listen(3000);
