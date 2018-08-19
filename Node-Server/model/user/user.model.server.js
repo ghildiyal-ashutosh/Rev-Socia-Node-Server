@@ -33,8 +33,7 @@ updateUser = (user,userId) =>
     email:     user.email,
     contact:   user.contact,
         role: user.role,
-    interest:  user.interest,
-})
+    })
 
 addWork = (workId,userId) =>
 
@@ -58,11 +57,17 @@ findWorkForUser = (userId) =>
               .populate('works')
               .exec()
 
+addReviewer = (userId,reviewerId) =>
+    userModel.update({_id:userId}, {
+        reviewer:reviewerId
+    })
+
+
 
 
 
 
 module.exports = {
   findAllUsers, findUserByCredentials,findUserById,findByUsername,
-      createUser,deleteUser, updateUser,addWork,deleteWork,findWorkForUser
+      createUser,deleteUser, updateUser,addWork,deleteWork,findWorkForUser,addReviewer
 };

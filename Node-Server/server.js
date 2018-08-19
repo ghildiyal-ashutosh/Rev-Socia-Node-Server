@@ -39,6 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 require('./services/user.service.server')(app);
 require('./services/work.service.server')(app);
+require('./services/reviewer.service.server')(app);
 
 
 

@@ -7,10 +7,10 @@ module.exports = mongoose.Schema({
     password: String,
     contact : Number,
     email: String,
-    interest: {field1:String, field2: String, field3: String, field4: String},
     role: String,
-    bitcoins : Number,
+    crypto : Number,
     works :
         [{type : mongoose.Schema.Types.ObjectId,
-            ref : 'WorkModel'}]
+            ref : 'WorkModel'}],
+    reviewer : {}
 },{collection: 'user'});
