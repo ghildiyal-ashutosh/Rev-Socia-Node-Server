@@ -43,7 +43,7 @@ module.exports = app => {
 
                 if (response !== null)
                 {
-                    req.session['currentUser'] = user;
+                    req.session['currentUser'] = response;
                     req.session['noUser']      = {status : false};
                     res.send(response);
                 }
@@ -55,8 +55,6 @@ module.exports = app => {
 
    function currentUser(req,res)
     {
-
-
         if (req.session.noUser.status)
         {
             res.send({username: '-1'});
@@ -96,15 +94,14 @@ module.exports = app => {
 
             }
 
-
-    updateUser = (req,res) =>
-
-        userModel.updateUser(req.body, req.body._id)
+            updateUser = (req,res) =>
+                userModel.updateUser(req.body, req.body._id)
             .then (function(user){
                 if (user !== null)
                 {
+                    console.log(req.body);
                     req.session['currentUser'] = user;
-                    res.send(req.body);
+                    res.send(user);
                 }
                 else
                     res.send({_id : -1})
@@ -133,4 +130,5 @@ module.exports = app => {
     app.post('/api/user', createUser );
     app.put('/api/user', updateUser);
     app.get('/api/user/username/:username', findByUsername)
+
 }

@@ -28,17 +28,41 @@ deleteUser = (userId) =>
 updateUser = (user,userId) =>
     userModel.update({
     _id:userId
-},{
-    username:  user.username,
-    firstName: user.firstName,
+},{firstName: user.firstName,
     lastName:  user.lastName,
-    email: user.email,
-    contact: user.contact,
-    interest: user.interest,
-    role: user.role
+    email:     user.email,
+    contact:   user.contact,
+        role: user.role,
+    interest:  user.interest,
 })
+
+addWork = (workId,userId) =>
+
+    userModel.update({
+        _id : userId
+    },{
+     $push: {works: workId}}
+    )
+
+deleteWork = (workId,userId) =>
+    userModel.update({
+            _id: userId
+        },{
+            $pull: {works: workId}}
+    )
+
+findWorkForUser = (userId) =>
+    userModel.findOne
+
+    ({_id: userId})
+              .populate('works')
+              .exec()
+
+
+
+
 
 module.exports = {
   findAllUsers, findUserByCredentials,findUserById,findByUsername,
-      createUser,deleteUser, updateUser
+      createUser,deleteUser, updateUser,addWork,deleteWork,findWorkForUser
 };

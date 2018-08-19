@@ -8,5 +8,9 @@ module.exports = mongoose.Schema({
     contact : Number,
     email: String,
     interest: {field1:String, field2: String, field3: String, field4: String},
-    role: String
+    role: String,
+    bitcoins : Number,
+    works :
+        [{type : mongoose.Schema.Types.ObjectId,
+            ref : 'WorkModel'}]
 },{collection: 'user'});
