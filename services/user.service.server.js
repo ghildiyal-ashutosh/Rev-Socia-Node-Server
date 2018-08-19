@@ -133,6 +133,17 @@ module.exports = app => {
             }))
     }
 
+    function createUserByAdmin(req,res)
+    {
+        var user = req.body;
+
+        userModel.createUser(user)
+            .then((response) => {
+                res.send(response);
+            })
+
+    }
+
     app.get('/api/user', findAllUsers);
    app.get('/api/user/userId/:userId', findUserById);
     app.post('/api/user/login', logIn);
@@ -143,5 +154,6 @@ module.exports = app => {
     app.put('/api/user', updateUser);
     app.get('/api/user/username/:username', findByUsername);
     app.put('/api/user/updateByAdmin', updateByAdmin);
+    app.post('/api/user/admin', createUserByAdmin );
 
 }
