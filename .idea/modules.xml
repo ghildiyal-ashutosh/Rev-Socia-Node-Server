@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Node-Server.iml" filepath="$PROJECT_DIR$/.idea/Node-Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Rev-Socia-Node-Server.iml" filepath="$PROJECT_DIR$/.idea/Rev-Socia-Node-Server.iml" />
     </modules>
   </component>
 </project>
