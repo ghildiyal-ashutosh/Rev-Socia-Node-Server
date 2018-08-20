@@ -11,11 +11,14 @@ module.exports = app => {
         const reviewerId = review.reviewer;
         const workId = review.work;
 
-        reviewModel.addReviewed(workId, reviewerId);
+
 
         console.log(review);
         reviewModel.createReview(review)
-            .then((response) => res.send(response));
+            .then((response) =>{
+                reviewerModel.addReviewed(workId, reviewerId)
+                    .then (()=> res.send(response));
+            })
     }
 
       function  findReviewForWork(req,res)
