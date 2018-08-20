@@ -10,7 +10,7 @@ mongoose.connect('mongodb://heroku_x421bc1k:hmdhnl4bdkkcmb2v0c40pdst76@ds125892.
 
 app.use(function (req,res,next) {
 
-    var allowedOrigins = ['http://localhost:4200', 'https://rev-socia-angular-client.herokuapp.com'];
+    var allowedOrigins = ['http://localhost:4200', 'https://rev-socia-angular-client.herokuapp.com/'];
     var origin = req.headers.origin;
     if(allowedOrigins.indexOf(origin) > -1){
         res.setHeader('Access-Control-Allow-Origin', origin);
