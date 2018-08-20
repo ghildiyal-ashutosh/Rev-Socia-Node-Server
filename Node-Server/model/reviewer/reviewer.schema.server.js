@@ -6,7 +6,7 @@ module.exports = mongoose.Schema({
         enum: ['Science','Technology','Computer', 'Arts', 'Algorithm', 'Mathematics' ]}],
     rating: Number,
     reviewed:  [{type : mongoose.Schema.Types.ObjectId,
-        ref : 'SubmissionModel'}]
+        ref : 'ReviewModel'}]
 },{collection: 'reviewer'})
 
 

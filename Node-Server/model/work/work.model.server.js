@@ -7,7 +7,7 @@ findAllWorks = () =>
     workModel.find();
 
 findWorkById = (workId) =>
-    workModel.find({_id:workId})
+    workModel.findOne({_id:workId})
 
 deleteWork = (workId) =>
     workModel.remove({_id:workId});
