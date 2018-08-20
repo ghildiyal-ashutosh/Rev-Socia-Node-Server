@@ -1,11 +1,17 @@
 module.exports = app => {
 
     const reviewModel = require('../model/review/review.model.server');
+    const reviewerModel = require('../model/reviewer/reviewer.model.server')
 
     function createReview(req,res) {
         const review = req.body;
 
         review.timeStamp = Date().substring(0,25);
+
+        const reviewerId = review.reviewer;
+        const workId = review.work;
+
+        reviewModel.addReviewed(workId, reviewerId);
 
         console.log(review);
         reviewModel.createReview(review)

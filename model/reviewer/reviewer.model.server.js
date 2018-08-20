@@ -24,10 +24,10 @@ deleteReviewerField = (field,reviewerId) =>
 
 
 
-addReviewed = (submissionId,reviewerId) =>
+addReviewed = (workId,reviewerId) =>
     reviewerModel.update(
         {_id: reviewerId},
-        {$push :{reviewed: submissionId}})
+        {$push :{reviewed: workId}})
 
 findReviewerById = (reviewerId) =>
     reviewerModel.findOne({_id: reviewerId});
