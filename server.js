@@ -4,7 +4,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 const mongoose = require ('mongoose');
-//mongoose.connect('mongodb://127.0.0.1/rev-socia');
+// mongoose.connect('mongodb://127.0.0.1/rev-socia');
 mongoose.connect('mongodb://heroku_x421bc1k:hmdhnl4bdkkcmb2v0c40pdst76@ds125892.mlab.com:25892/heroku_x421bc1k');
 
 
@@ -42,6 +42,7 @@ require('./services/user.service.server')(app);
 require('./services/work.service.server')(app);
 require('./services/reviewer.service.server')(app);
 require('./services/review.service.server')(app);
+require('./services/movie.service.server')(app);
 
 
 
