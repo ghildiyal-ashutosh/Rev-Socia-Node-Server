@@ -112,6 +112,14 @@ module.exports = app => {
                     });
             }
 
+            function updateByAdmin(req,res){
+           const user = req.body;
+           userModel.updateUser(user,user._id).then((function (response) {
+               res.send((response));
+           }))
+            }
+
+
   function  findByUsername(req,res)
     {
         var username = req.params.username;
@@ -133,6 +141,7 @@ module.exports = app => {
     app.delete('/api/user/:userId', deleteUser);
     app.post('/api/user', createUser );
     app.put('/api/user', updateUser);
-    app.get('/api/user/username/:username', findByUsername)
+    app.get('/api/user/username/:username', findByUsername);
+    app.put('/api/user/updateByAdmin', updateByAdmin);
 
 }
