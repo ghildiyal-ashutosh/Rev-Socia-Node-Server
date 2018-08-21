@@ -10,14 +10,20 @@ module.exports = app => {
 
 
         const userId = req.session.currentUser._id;
+        const points = work.points;
 
         workModel.createWork(work)
             .then((work) => {
                 if(work !== null){
                     userModel.addWork(work._id, userId)
                         .then((response) => {
+                            if (response !== null){
 
-                            res.send(work);
+                           userModel.decreaseCrypto(userId,points).then
+                           ((response) => res.send(work))
+                           }
+
+
                         });
                     }
                 else

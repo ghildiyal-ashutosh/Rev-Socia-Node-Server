@@ -2,6 +2,7 @@ module.exports = app => {
 
     const reviewModel = require('../model/review/review.model.server');
     const reviewerModel = require('../model/reviewer/reviewer.model.server')
+    const userModel = require('../model/user/user.model.server');
 
     function createReview(req,res) {
         const review = req.body;
@@ -10,6 +11,8 @@ module.exports = app => {
 
         const reviewerId = review.reviewer;
         const workId = review.work;
+        const userId = req.session.currentUser._id;
+        const points = review.cost;
 
 
 
@@ -17,7 +20,11 @@ module.exports = app => {
         reviewModel.createReview(review)
             .then((response) =>{
                 reviewerModel.addReviewed(workId, reviewerId)
-                    .then (()=> res.send(response));
+                    .then (()=> {
+                        userModel.increaseCrypto(userId,points).then
+                        (() =>  res.send(response))
+
+                    });
             })
     }
 

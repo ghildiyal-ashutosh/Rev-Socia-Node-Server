@@ -62,6 +62,17 @@ addReviewer = (userId,reviewerId) =>
         reviewer:reviewerId
     })
 
+increaseCrypto =  (userId,value) =>
+    userModel.update({_id:userId},{
+        $inc : {crypto: +value}
+    })
+
+decreaseCrypto =  (userId,value) =>
+    userModel.update({_id:userId},{
+        $inc : {crypto: -value}
+    })
+
+
 
 
 
@@ -69,5 +80,6 @@ addReviewer = (userId,reviewerId) =>
 
 module.exports = {
   findAllUsers, findUserByCredentials,findUserById,findByUsername,
-      createUser,deleteUser, updateUser,addWork,deleteWork,findWorkForUser,addReviewer
+      createUser,deleteUser, updateUser,addWork,deleteWork,findWorkForUser,addReviewer,
+    increaseCrypto, decreaseCrypto
 };
