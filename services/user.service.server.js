@@ -94,19 +94,23 @@ module.exports = app => {
 
             }
 
-            updateUser = (req,res) =>
-                userModel.updateUser(req.body, req.body._id)
-            .then (function(user){
-                if (user !== null)
-                {
-                    console.log(req.body);
-                    req.session['currentUser'] = user;
-                    res.send(user);
-                }
-                else
-                    res.send({_id : -1})
+            function updateUser(req,res) {
+       const user = req.body;
+       req.session.currentUser.firstName = user.firstName;
+                req.session.currentUser.lastName = user.lastName;
+                req.session.currentUser.email = user.email;
+                req.session.currentUser.contact = user.contact;
 
-            });
+                userModel.updateUser(user, req.session.currentUser.id)
+                    .then(function (user) {
+                        if (user !== null) {
+                            res.send(req.session.currentUser);
+                        }
+                        else
+                            res.send({_id: -1})
+
+                    });
+            }
 
   function  findByUsername(req,res)
     {
